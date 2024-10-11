@@ -23,4 +23,12 @@ public class Todo {
     private String content;
     private boolean complete;
     private LocalDateTime dueDate;
+
+
+    public void TodoUpdate(String title, String content, boolean complete, LocalDateTime dueDate) {
+        this.title = title;
+        this.content = content;
+        this.complete = complete;
+        this.dueDate = dueDate;
+    }
 }

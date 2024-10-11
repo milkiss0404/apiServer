@@ -2,12 +2,22 @@ package org.zerock.apiserver.service;
 
 import jakarta.transaction.Transactional;
 import org.zerock.apiserver.domain.Todo;
+import org.zerock.apiserver.dto.PageRequestDTO;
+import org.zerock.apiserver.dto.PageResponseDTO;
 import org.zerock.apiserver.dto.TodoDTO;
 
 @Transactional
 public interface TodoService {
 
     TodoDTO get(Long tno);
+
+    Long register(TodoDTO dto);
+
+    PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
+
+    void modify(TodoDTO dto);
+
+    void remove(Long tno);
 
     default TodoDTO entityToDTO(Todo todo) {
         return  TodoDTO.builder()
