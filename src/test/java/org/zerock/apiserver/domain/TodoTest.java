@@ -71,7 +71,11 @@ class TodoTest {
     @Test
     public void testPaging() {
         for (int i = 0; i < 100; i++) {
-
+            Todo update = Todo.builder()
+                    .title("타이틀")
+                    .content("dasdasdas")
+                    .build();
+            Todo save = todoRepository.save(update);
 
         }
         //페이지번호 0부터
@@ -81,5 +85,10 @@ class TodoTest {
         log.info(result.getTotalElements());
         log.info(result.getContent());
 
+    }
+
+    @Test
+    public void testSearch1() {
+        todoRepository.search1();
     }
 }
