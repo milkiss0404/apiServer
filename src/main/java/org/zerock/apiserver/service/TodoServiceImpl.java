@@ -10,6 +10,7 @@ import org.zerock.apiserver.dto.PageResponseDTO;
 import org.zerock.apiserver.dto.TodoDTO;
 import org.zerock.apiserver.repository.TodoRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -68,7 +69,8 @@ public class TodoServiceImpl implements TodoService{
         Optional<Todo> result = todoRepository.findById(dto.getTno());
         Todo todo = result.orElseThrow();
 
-        todo.TodoUpdate(dto.getTitle(),dto.getContent(),dto.isComplete(),dto.getDueDate());
+        LocalDate dueDate = dto.getDueDate() != null ? dto.getDueDate() : LocalDate.now();  // 기본값 설정
+        todo.TodoUpdate(dto.getTitle(), dto.getContent(), dto.isComplete(), dueDate);
     }
 
     @Override

@@ -6,6 +6,8 @@ import org.zerock.apiserver.dto.PageRequestDTO;
 import org.zerock.apiserver.dto.PageResponseDTO;
 import org.zerock.apiserver.dto.TodoDTO;
 
+import java.time.LocalDate;
+
 @Transactional
 public interface TodoService {
 
@@ -25,7 +27,7 @@ public interface TodoService {
                 .title(todo.getTitle())
                 .content(todo.getContent())
                 .complete(todo.isComplete())
-                .dueDate(todo.getDueDate())
+                .dueDate(todo.getDueDate() != null ? LocalDate.from(todo.getDueDate()) : null)  // Null 체크
                 .build();
     }
 
@@ -36,7 +38,7 @@ public interface TodoService {
                 .title(todoDTO.getTitle())
                 .content(todoDTO.getContent())
                 .complete(todoDTO.isComplete())
-                .dueDate(todoDTO.getDueDate())
+                .dueDate(LocalDate.from(todoDTO.getDueDate().atStartOfDay()))
                 .build();
     }
 }
