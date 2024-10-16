@@ -26,11 +26,11 @@ public class TodoServiceImpl implements TodoService{
     public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
 
         //jpa
-        Page<Todo> result = todoRepository.search1(pageRequestDTO);
+        Page<Todo> result = todoRepository.search1(pageRequestDTO); //여기를 모름
 
         List<TodoDTO> dtoList = result
                 .get()
-                .map(this::entityToDTO).collect(Collectors.toList());
+                .map(todo -> entityToDTO(todo)).collect(Collectors.toList());
 
 
 
