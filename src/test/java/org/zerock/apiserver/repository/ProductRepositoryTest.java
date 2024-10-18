@@ -11,7 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.apiserver.domain.Product;
+import org.zerock.apiserver.dto.PageRequestDTO;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -62,6 +64,19 @@ class ProductRepositoryTest {
     @Test
     public void TestList() {
         Pageable pageable = PageRequest.of(0, 10, Sort.by("pno").descending());
-        Page<Object[]> objects = productRepository.selectList(pageable);
+        Page<Object[]> result = productRepository.selectList(pageable);
+            //Page 는  Slice 를 상속 받고 있음
+        result.getContent().forEach(arr -> log.info(Arrays.toString(arr)));
+
+    }
+
+
+    @Test
+    public void testSearch(){
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().build();
+
+        productRepository.searchList(pageRequestDTO);
+
+
     }
 }
