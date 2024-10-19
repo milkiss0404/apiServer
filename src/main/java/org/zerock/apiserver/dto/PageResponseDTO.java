@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 @Data
 public class PageResponseDTO<E> {
-    private List<E> dtoList;
+    private List<E> dtoList; //다양한 타입의  DTO 를 보내줄수있음
 
     private List<Integer> pageNumList;
 

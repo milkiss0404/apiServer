@@ -4,6 +4,7 @@ import groovy.util.logging.Log4j2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.zerock.apiserver.domain.Product;
 import org.zerock.apiserver.domain.Todo;
 import org.zerock.apiserver.dto.PageRequestDTO;
 import org.zerock.apiserver.dto.PageResponseDTO;
@@ -26,11 +27,11 @@ public class TodoServiceImpl implements TodoService{
     public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
 
         //jpa
-        Page<Todo> result = todoRepository.search1(pageRequestDTO);
+        Page<Todo> result = todoRepository.search1(pageRequestDTO); //여기를 모름
 
         List<TodoDTO> dtoList = result
                 .get()
-                .map(this::entityToDTO).collect(Collectors.toList());
+                .map(todo -> entityToDTO(todo)).collect(Collectors.toList());
 
 
 
@@ -50,7 +51,6 @@ public class TodoServiceImpl implements TodoService{
     public TodoDTO get(Long tno) {
         Optional<Todo> result = todoRepository.findById(tno);
         Todo todo = result.orElseThrow();
-
 
         return entityToDTO(todo);
     }
