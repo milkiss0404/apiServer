@@ -1,8 +1,12 @@
 package org.zerock.apiserver.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,5 +23,7 @@ public class TodoDTO {
 
     private boolean complete;
 
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
+
+
 }

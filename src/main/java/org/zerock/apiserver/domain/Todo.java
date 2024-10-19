@@ -1,9 +1,11 @@
 package org.zerock.apiserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAccessor;
 
 @ToString
 @Getter
@@ -22,5 +24,15 @@ public class Todo {
     private String title;
     private String content;
     private boolean complete;
-    private LocalDateTime dueDate;
+
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
+    private LocalDate dueDate;
+
+
+    public void TodoUpdate(String title, String content, boolean complete, LocalDate dueDate) {
+        this.title = title;
+        this.content = content;
+        this.complete = complete;
+        this.dueDate = LocalDate.from((TemporalAccessor) dueDate);
+    }
 }

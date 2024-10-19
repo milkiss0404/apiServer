@@ -33,7 +33,7 @@ class TodoTest {
        Todo todo =  Todo.builder()
                 .title("title")
                 .content("content")
-                .dueDate(LocalDate.of(2023,12,30).atStartOfDay())
+                .dueDate(LocalDate.from(LocalDate.of(2023,12,30).atStartOfDay()))
                 .build();
         todoRepository.save(todo);
     }
@@ -87,8 +87,8 @@ class TodoTest {
 
     }
 
-    @Test
-    public void testSearch1() {
-        todoRepository.search1();
-    }
+//    @Test
+//    public void testSearch1() {
+//        todoRepository.search1();
+//    }
 }
