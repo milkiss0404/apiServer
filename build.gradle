@@ -98,7 +98,6 @@ dependencies {
 
 			"jakarta.annotation:jakarta.annotation-api",
 
-
 			"com.querydsl:querydsl-apt:${queryDslVersion}:jakarta")
 
 }

@@ -6,7 +6,6 @@ import groovy.util.logging.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.*;
-import org.springframework.data.jpa.repository.support.Querydsl;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.zerock.apiserver.domain.QTodo;
 import org.zerock.apiserver.domain.Todo;

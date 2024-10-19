@@ -40,11 +40,11 @@ public class PageResponseDTO<E> {
         this.next = totalCount > end * pageRequestDTO.getSize(); //size는 페이지당 몇개
 
         this.pageNumList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
-
+        //startInclusive: 범위의 시작값 (포함)
+        //endInclusive: 범위의 끝값 (포함)
+        //IntStream.rangeClosed(1, 5)
+        //.forEach(System.out::println);
         this.prevPage = start > 1 ? start -1 :0;
         this.nextPage = next ? end + 1 : 0;
-
-
-
     }
 }
