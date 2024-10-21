@@ -60,7 +60,7 @@ public class CustomFileUtil {
 
                 //이미지 파일이라면
                 if (contentType != null||contentType.startsWith("image")) {
-                    Path thumbNailPath = Paths.get("s_" + savedName);
+                    Path thumbNailPath = Paths.get(uploadPath,"s_" + savedName);
                     Thumbnails.of(savePath.toFile()).size(200,200).toFile(thumbNailPath.toFile()); //썸네일 저장
                 }
 

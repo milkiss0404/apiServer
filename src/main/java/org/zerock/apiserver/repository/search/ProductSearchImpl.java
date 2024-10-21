@@ -47,4 +47,5 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
 
         return null;
     }
+
 }
