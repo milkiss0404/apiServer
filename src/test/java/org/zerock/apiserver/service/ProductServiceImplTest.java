@@ -9,6 +9,9 @@ import org.zerock.apiserver.dto.PageRequestDTO;
 import org.zerock.apiserver.dto.PageResponseDTO;
 import org.zerock.apiserver.dto.ProductDTO;
 
+import java.util.List;
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -27,5 +30,24 @@ class ProductServiceImplTest {
         PageResponseDTO<ProductDTO> responseDTO = productService.getList(pageRequestDTO);
 
         log.info(responseDTO.getDtoList());
+    }
+
+
+    @Test
+    public void testRegister() {
+        ProductDTO productDTO = ProductDTO.builder()
+                .pname("새로운 상품")
+                .pdesc("신규 추가 상품입니다.")
+                .price(1000)
+                .build();
+
+        productDTO.setUploadedFileNames(
+                List.of(
+                        UUID.randomUUID()+"_"+"Test1.jpg",
+                        UUID.randomUUID()+"_"+"Test1.jpg"
+                ));
+
+        productService.register(productDTO);
+
     }
 }

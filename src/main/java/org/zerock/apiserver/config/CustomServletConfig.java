@@ -11,6 +11,7 @@ import org.zerock.apiserver.controller.formatter.LocalDateFormatter;
 @Configuration
 @Log4j2
 public class CustomServletConfig implements WebMvcConfigurer {
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
        log.info("--------------------");
@@ -20,9 +21,9 @@ public class CustomServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
+        registry.addMapping("/**") //cors경로
                 .maxAge(500)
-                .allowedOrigins("http://localhost:3000")
+                .allowedOrigins("http://localhost:3000") //허락경로
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS");
     }
 }
