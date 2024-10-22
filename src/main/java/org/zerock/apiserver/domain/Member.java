@@ -1,10 +1,7 @@
 package org.zerock.apiserver.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@ToString(exclude = "memberRoleList")
 public class Member {
 
     @Id
@@ -25,7 +23,7 @@ public class Member {
 
     private boolean social;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private List<MemberRole> memberRoleList = new ArrayList<>();
 
@@ -34,6 +32,13 @@ public class Member {
     }
     public void clearRole(){
         memberRoleList.clear();
+    }
+
+    public void changePw(String Pw) {
+        this.pw = Pw;
+    }
+    public void changeSocial(boolean Social) {
+        this.social = Social;
     }
 
 
