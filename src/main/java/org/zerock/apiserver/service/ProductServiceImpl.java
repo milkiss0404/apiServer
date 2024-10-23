@@ -57,7 +57,9 @@ public class ProductServiceImpl implements ProductService{
 
         long totalCount = result.getTotalElements();
 
+
         return PageResponseDTO.<ProductDTO>withAll()
+                .current(result.getNumber())
                 .dtoList(dtoList)
                 .total(totalCount)
                 .pageRequestDTO(pageRequestDTO)

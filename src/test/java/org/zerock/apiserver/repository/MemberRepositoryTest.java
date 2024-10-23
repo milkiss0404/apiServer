@@ -39,4 +39,14 @@ class MemberRepositoryTest {
         }
     }
 
+    @Test
+    public void testRead(){
+        String email = "user9@aaa.com";
+        Member withRoles = memberRepository.getWithRoles(email);
+
+        log.info("--------------------------------------------------------------------");
+        log.info(withRoles);
+        log.info("--------------------------------------------------------------------");
+    }
+
 }

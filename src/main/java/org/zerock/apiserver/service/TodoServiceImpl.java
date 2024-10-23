@@ -36,8 +36,10 @@ public class TodoServiceImpl implements TodoService{
 
 
         PageResponseDTO<TodoDTO> responseDTO;
+        int current = result.getNumber();
 
         responseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .current(current)
                 .dtoList(dtoList)
                 .pageRequestDTO(pageRequestDTO)
                 .total(result.getTotalElements())
