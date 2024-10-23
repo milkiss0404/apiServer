@@ -21,10 +21,11 @@ public class PageResponseDTO<E> {
     private int totalCount,prevPage,nextPage,totalPage,current;
 
     @Builder(builderMethodName = "withAll")
-    public PageResponseDTO(List<E> dtoList, PageRequestDTO pageRequestDTO, long total) { //jpa는 count  숫자가 long으로나온다??
+    public PageResponseDTO(List<E> dtoList, PageRequestDTO pageRequestDTO, long total ,int current) { //jpa는 count  숫자가 long으로나온다??
         this.dtoList = dtoList;
         this.pageRequestDTO = pageRequestDTO;
         this.totalCount = (int) total;
+        this.current = current;
 
         //끝페이지
         //ceil == 올림

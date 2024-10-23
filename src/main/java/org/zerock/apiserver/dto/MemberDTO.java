@@ -24,11 +24,11 @@ public class MemberDTO extends User {
         this.social = social;
         this.roleNames = roleNames;
     }
-
+    // JWT 문자열의 내용을 Claims 라고함
     public Map<String,Object> getClaims() {
         Map<String,Object> dataMap = new HashMap<>();
         dataMap.put("email",email);
-        dataMap.put("pw",pw);
+        dataMap.put("pw",pw); //이건뺴야함
         dataMap.put("nickname",nickname);
         dataMap.put("social",social);
         dataMap.put("roleNames",roleNames);

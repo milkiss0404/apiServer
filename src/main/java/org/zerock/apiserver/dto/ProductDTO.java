@@ -29,5 +29,5 @@ public class ProductDTO {
 
     //조회용
     @Builder.Default
-    private List<String> uploadedFileNames = new ArrayList<>();
+    private List<String>  uploadedFileNames = new ArrayList<>();
 }
