@@ -65,6 +65,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {  // OncePerRequestFil
             //스프링 시큐리티가 사용하는토큰임
             //상태가 없기떄문에 매번 토큰이 호출될떄마다 시큐리티 컨텍스트홀더에 넣어주고 권한 확인할수있음
             UsernamePasswordAuthenticationToken authenticationToken =
+                    //파라미터 (object 타입 ,사용자의 자격증명( 비밀번호), 사용자 권한목록)
                     new UsernamePasswordAuthenticationToken(memberDTO,pw,memberDTO.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
