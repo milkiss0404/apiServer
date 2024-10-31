@@ -43,7 +43,7 @@ public class ProductController {
 
         Long pno = productService.register(productDTO);
 
-        Thread.sleep(2000);
+        Thread.sleep(500);
 
         return Map.of("result", pno);
     }
@@ -53,7 +53,7 @@ public class ProductController {
         return fileUtil.getFile(fileName);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/list")
     public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO) {
         return productService.getList(pageRequestDTO);
@@ -62,7 +62,7 @@ public class ProductController {
     @GetMapping("/{pno}")
     public ProductDTO read(@PathVariable("pno")Long pno) {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
